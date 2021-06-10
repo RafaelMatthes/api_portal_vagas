@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+    backend: 
+        build:
+            context: ./docker/
+            dockerfile: Dockerfile
+
+        env_file:
+            - ./docker/.env
+        volumes:
+            - ./:/app
+        ports:
+            - 8000:8000
+        container_name: api-vagas
+    
+    redis:
+        image: redis
+        command: redis-server
+        ports:
+            - "6379:6379"
+        container_name: redis-container
