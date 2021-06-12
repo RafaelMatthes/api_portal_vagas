@@ -9,7 +9,6 @@ class CandidatoModelTestCase(TestCase):
             email='email@teste.com.br'
         )
 
-
     def test_verifica_atributos_candidato(self):
         """ este teste deverá verificar a criação de cadidatos """
 
