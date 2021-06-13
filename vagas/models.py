@@ -35,6 +35,7 @@ class Candidaturas(models.Model):
     status = models.CharField(max_length=2, choices=STATUS_CHOICE, default='AC')
     data_cadastro = models.DateTimeField(default=timezone.now)
 
-
+    def __str__(self):
+        return self.vaga
 
 
