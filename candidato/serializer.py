@@ -5,7 +5,7 @@ from candidato.models import Candidato
 class CandidatoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidato
-        fields = '__all__'
+        fields = ['id','nome','resumo','sexo','formacao','cep','email', 'avatar','data_cadastro']
 
 
 

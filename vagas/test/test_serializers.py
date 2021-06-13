@@ -33,7 +33,6 @@ class VagaSerializerTestCase(TestCase):
         self.assertEquals(data['remuneracao'], self.vaga.remuneracao)
         self.assertEquals(data['beneficios'], self.vaga.beneficios)
 
-
 class CandidaturaSerializerTestCase(TestCase):
 
     def setUp(self):
@@ -105,8 +104,6 @@ class ListaCandidaturasSerializerTestCase(TestCase):
         self.assertEquals(data['id_vaga'], self.vaga.id)
         self.assertEquals(data['vaga_nome'], self.vaga.titulo)
         self.assertEquals(data['status'], self.candidatura.status)
-
-
 
 class ListaCandidatoVagaSerializerTestCase(TestCase):
 

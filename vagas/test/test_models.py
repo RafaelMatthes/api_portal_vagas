@@ -1,8 +1,6 @@
 from django.test import TestCase
 from candidato.models import Candidato
 from vagas.models import Vaga, Candidaturas
-from django.urls import reverse
-from rest_framework import status
 
 
 class VagaModelTest(TestCase):
@@ -22,8 +20,7 @@ class VagaModelTest(TestCase):
         self.assertEquals(self.vaga.remuneracao, 'a combinar')
         self.assertEquals(self.vaga.beneficios, '')
 
-
-class CandidaturaTest(TestCase):
+class CandidaturasModelTest(TestCase):
 
     def setUp(self):
         self.candidato = Candidato.objects.create(
@@ -35,27 +32,11 @@ class CandidaturaTest(TestCase):
             titulo = 'vaga teste',
         )
 
-        self.list_url = reverse('Candidaturas-list')
+        self.candidatura = Candidaturas(vaga=self.vaga,candidato=self.candidato)
 
-    def test_candidatura_get(self):
-        """ verifica GET candidaturas """
+    def test_verifica_atributos_modelo(self):
+        """ teste para verificar atributos default """
 
-        response = self.client.get(self.list_url)
-
-        self.assertEquals(response.status_code, status.HTTP_200_OK)
-
-    def test_candidatura_post(self):
-        """ teste para verificar o post de candidaturas """
-
-        itens = {
-                    "status": '',
-                    "data_cadastro": '',
-                    "candidato": self.candidato.id,
-                    "vaga":  self.vaga.id
-                }
-
-        response = self.client.post(self.list_url, itens)
-
-        self.assertEquals(response.status_code, status.HTTP_201_CREATED)
-
-    
+        self.assertEquals(self.candidatura.candidato.id,  self.candidato.id)
+        self.assertEquals(self.candidatura.vaga.id,  self.vaga.id)
+        self.assertEquals(self.candidatura.status,  'AC')
