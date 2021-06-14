@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'candidato',
     'vagas',
-    'corsheaders'
+    'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
