@@ -5,6 +5,16 @@ services:
         ports:
             - "6379:6379"
         container_name: redis
+    
+    db:
+        image: postgres
+        environment:
+            - POSTGRES_DB=portalvagas
+            - POSTGRES_USER=vagas
+            - POSTGRES_PASSWORD=vagas123
+        container_name: db
+        ports:
+            - 5432:5432
         
     backend: 
         build:
