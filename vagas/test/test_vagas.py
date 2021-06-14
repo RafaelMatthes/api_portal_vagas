@@ -27,12 +27,12 @@ class VagasTestCase(TestCase):
 
     def test_vaga_put(self):
         """ teste para verificar o put de vagas"""    
-        data =  json.dumps({
+        data = {
             "titulo": "Programador Full Stack Sênior",
             "resumo": "Teste de resumo da vaga"
-        })
+        }
 
-        response = self.client.put('/vagas/1/', data=data,  content_type='application/json')
+        response = self.client.put('/vagas/'+str(self.vaga.id)+'/', data=data, content_type='application/json')
 
         self.assertEquals(response.status_code, status.HTTP_200_OK)
 

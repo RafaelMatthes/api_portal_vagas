@@ -32,16 +32,16 @@ class candidatosTestCase(TestCase):
 
     def test_candidato_put(self):
         """ teste para verificar o put de candidatos"""    
-        data =  json.dumps({
-                "nome": "Teste",
-                "resumo": " resumo teste",
-                "sexo": "M",
-                "formacao": "EM",
-                "cep": "89069055",
-                "email": "teste@mail.com"
+        data = json.dumps({
+                   "nome": "Teste 223",
+                    "resumo": "resumo teste",
+                    "sexo": "M",
+                    "formacao": "EM",
+                    "cep": "89069055",
+                    "email": "teste@mail.com"
             })
 
-        response = self.client.put('/candidatos/1/', data=data,  content_type='application/json')
+        response = self.client.put(self.list_url+str(self.candidato.id)+'/', data=data,  content_type='application/json')
 
         self.assertEquals(response.status_code, status.HTTP_200_OK)
 

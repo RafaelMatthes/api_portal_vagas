@@ -147,3 +147,5 @@ SESSION_CACHE_ALIAS = 'default'
 #     "http://'127.0.0.1:6379",
 
 # ]
+
+APPEND_SLASH=False
