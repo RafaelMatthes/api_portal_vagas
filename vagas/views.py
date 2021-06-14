@@ -1,6 +1,8 @@
 from rest_framework import viewsets, generics
 from vagas.models import Vaga, Candidaturas
 from vagas.serializer import VagaSerializer, CandidaturasSerializer, ListaCandidaturasCandidatoSerializer, ListaCandidatosVagaSerializer
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
 class VagasViewSet(viewsets.ModelViewSet):
@@ -10,6 +12,10 @@ class VagasViewSet(viewsets.ModelViewSet):
     serializer_class = VagaSerializer
     http_method_names = ['get','post', 'put', 'path']
 
+    @method_decorator(cache_page(20))
+    def dispatch(self, *args, **kwargs):
+        return super(VagasViewSet, self).dispatch(*args, **kwargs)
+
 
 class CandidaturasViewSet(viewsets.ModelViewSet):
     """ viewset para exibir candidaturas """
@@ -17,6 +23,10 @@ class CandidaturasViewSet(viewsets.ModelViewSet):
     queryset = Candidaturas.objects.all()
     serializer_class = CandidaturasSerializer
     http_method_names = ['get','post', 'put', 'path']
+
+    @method_decorator(cache_page(20))
+    def dispatch(self, *args, **kwargs):
+        return super(CandidaturasViewSet, self).dispatch(*args, **kwargs)
 
 class ListaCandidaturasCandidatoViewSet(generics.ListAPIView):
     """ listand as candidaturas de um candidato """

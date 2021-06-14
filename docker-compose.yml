@@ -1,5 +1,11 @@
 version: '3.7'
 services:
+    redis:
+        image: redis:6-alpine
+        ports:
+            - "6379:6379"
+        container_name: redis
+        
     backend: 
         build:
             context: ./
@@ -12,10 +18,7 @@ services:
         ports:
             - 8000:8000
         container_name: api-vagas
+        depends_on:
+            - redis
     
-    redis:
-        image: redis
-        command: redis-server
-        ports:
-            - "6379:6379"
-        container_name: redis
+   
