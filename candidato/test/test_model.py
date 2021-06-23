@@ -10,7 +10,7 @@ class CandidatoModelTestCase(TestCase):
         )
 
     def test_verifica_atributos_candidato(self):
-        """ este teste deverá verificar a criação de cadidatos """
+        """ este teste deverá verificar a criação de candidatos """
 
         self.assertEquals(self.candidato.nome, 'Candidato Teste')
         self.assertEquals(self.candidato.resumo, '')
